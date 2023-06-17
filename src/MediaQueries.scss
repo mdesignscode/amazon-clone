@@ -1,0 +1,28 @@
+@media (max-width: 1365px) {
+  .home__row {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+
+  .image__slider {
+    margin-bottom: calc(-16% + -2em) !important;
+  }
+}
+
+@media (max-width: 1000px) {
+  html {
+    width: 1100px;
+  }
+
+  .header__optionBasketCart {
+    display: none;
+  }
+
+  .grid__container {
+    width: 340px !important;
+    padding-left: 27px !important;
+  }
+
+  .image__slider {
+    margin-bottom: -200px !important;
+  }
+}

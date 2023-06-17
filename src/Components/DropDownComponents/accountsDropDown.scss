@@ -1,0 +1,86 @@
+$light: #fff;
+$dark: #0f1111;
+$gray: #525252;
+$lightGray: #eeeeee;
+
+.accountsDropDown {
+  background-color: $light;
+  position: absolute;
+  top: 2.7em;
+  left: -16.8em;
+  z-index: 10;
+  width: 32em !important;
+  height: 32em;
+  display: block;
+  color: $dark;
+  padding: 14px 0 7px;
+  padding-inline: 2em !important;
+  border: 1px solid #bbbbbb;
+
+  &::before {
+    content: "";
+    background-color: $light;
+    width: 1em;
+    height: 1em;
+    position: absolute;
+    top: -5px;
+    right: 110px;
+    transform: rotate(45deg);
+  }
+
+  .accountsDropDown__header {
+    display: grid;
+    place-items: center;
+    border-bottom: 1px solid $lightGray;
+    padding-bottom: 0.5em;
+    margin-bottom: 1em;
+
+    a {
+      text-decoration: none;
+      display: grid;
+      place-items: center;
+
+      .signInButton {
+        font-size: 14px;
+        width: 197px;
+        padding-bottom: 2em;
+        height: 29px;
+        background: linear-gradient(#f6de9f, #eebb3c);
+        border-radius: 3px;
+        border-color: #c89411;
+        text-align: center;
+      }
+    }
+
+    span {
+      width: 14em;
+      font-size: 12px;
+      margin-left: 1em;
+      margin-top: .5em;
+    }
+  }
+
+  .accountsDropDown__body {
+
+    .accountsDropDown__bodyColumn {
+      display: flex;
+      flex-direction: column;
+      gap: .2em;
+
+      &.first {
+        border-right: 1px solid $lightGray;
+        margin-right: .5em;
+      }
+
+      .accountsDropDown__bodyTitle {
+        font-size: 16px;
+        font-family: 'AmazonEmberBold';
+      }
+
+      .accountsDropDown__bodyContent {
+        font-size: 13.5px;
+        color: $gray;
+      }
+    }
+  }
+}

@@ -1,0 +1,159 @@
+$primary: #37475A;
+$dark: #232F3E;
+$light: #fff;
+$secondary: #dddddd;
+$info: #CCCCCC;
+$gray: #8d9096;
+
+.footer {
+  color: $secondary;
+  font-size: 14px;
+  margin-top: 2em;
+
+  .backToTop {
+    display: grid;
+    place-items: center;
+    height: 49px;
+    background-color: $primary;
+    cursor: pointer;
+  }
+
+  .footer__navLink {
+    background-color: $dark;
+    border-bottom: 1px solid #3a4553;
+
+    .footer__navLinkColumn {
+      padding: 4em 1em 7em;
+      gap: .5em;
+
+      .footer__navLinkColumnTitle {
+        color: $light;
+        font-size: 16px;
+        font-family: 'AmazonEmberBold';
+      }
+
+      .footer__navLinkColumnContent {
+        cursor: pointer;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  .footer__line {
+    background-color: $dark;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 7em;
+
+    .footer__logo {
+      position: relative;
+      top: 4px;
+      height: 23px;
+      width: 76px;
+      cursor: pointer;
+    }
+
+    .footer__languages,
+    .footer__language {
+      border-radius: 3px;
+      border: 1px solid $gray;
+      color: $info;
+      height: 33px;
+      background-color: transparent;
+      font-size: 13.5px;
+      padding: 0;
+      position: relative;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+    }
+
+    .footer__languages {
+      margin-right: 7px;
+      margin-left: 6em;
+      width: 117px;
+
+      .footer__languagesDropdownMenu {
+        position: absolute;
+        bottom: 22.25em;
+        left: 29em;
+
+        .languages__dropdownMenu {
+          .form-check label {
+            position: relative;
+            right: 2em;
+          }
+
+          .spanish .moreOptions {
+            position: relative;
+            right: 3em;
+          }
+
+          .moreOptions {
+            position: relative;
+            right: 1em;
+          }
+          .shoppingAt {
+            right: 2em;
+          }
+
+          &::before {
+            top: 97%;
+            right: 121px;
+          }
+        }
+      }
+    }
+
+    .footer__language {
+      width: 141px;
+
+      span {
+        margin-right: 1em;
+      }
+    }
+
+    .footer__languagesToggle {
+      .footer__languagesToggleButton {
+        position: relative;
+        right: 0;
+
+        &.up {
+          left: 11px;
+          margin-bottom: 4px;
+        }
+      }
+    }
+
+    .footer__flag {
+      height: 12px;
+      width: 18px;
+      border: 1px solid $gray;
+    }
+  }
+
+  .footer_trademark {
+    background-color: #131A22;
+    display: grid;
+    place-items: center;
+    padding: 1em;
+    font-size: 12px;
+
+    .footer_trademarkLinks {
+      display: flex;
+      gap: 1.5em;
+
+      .footer__trademarkLink {
+        cursor: pointer;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

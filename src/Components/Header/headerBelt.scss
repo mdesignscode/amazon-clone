@@ -1,0 +1,46 @@
+$primary: #232f3e;
+$light: #fff;
+
+.nav__belt {
+  height: 39px;
+  background-color: $primary;
+  color: $light;
+  display: flex;
+  align-items: center;
+  justify-content: flex;
+  font-size: 14px;
+
+  .nav__beltMenu {
+    font-family: 'AmazonEmberBold';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: .25em;
+
+    &:hover {
+      border: 1px solid $light;
+    }
+
+  }
+
+  .nav__beltOptions {
+    span {
+      color: $light;
+      cursor: pointer;
+      padding: 4px 9px;
+    }
+
+    .nav__beltOption:hover {
+      border: 1px solid $light;
+    }
+
+    .prime {
+      svg {
+        position: relative;
+        left: 1px;
+        bottom: 3px;
+      }
+    }
+  }
+}

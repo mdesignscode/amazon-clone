@@ -1,0 +1,72 @@
+.image__slider {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  margin-bottom: -300px;
+
+  .image__sliderImage {
+    width: 100%;
+    position: relative;
+    z-index: -1;
+    mask-image: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.89), transparent);
+    object-fit: cover;
+
+    &.fadeOut {
+      animation: fadeInRight;
+      animation-duration: 1s;
+    }
+
+    &.fadeIn {
+      animation: fadeInLeft;
+      animation-duration: 1s;
+    }
+  }
+
+  .image__sliderControlButton {
+    position: absolute;
+    width: 80px;
+    height: 235px;
+    display: grid;
+    place-items: center;
+    background-color: transparent;
+    border: none;
+    margin: 3px;
+    top: 0;
+
+    &:focus {
+      border: 2px solid skyblue;
+      border-radius: 5px;
+      outline: white solid 2px;
+    }
+
+    &.next {
+      right: 0px;
+
+      .overlay {
+        position: relative;
+        left: 4px;
+      }
+    }
+
+    &.previous {
+      left: 0;
+
+      .overlay {
+        position: relative;
+        right: 4px;
+      }
+    }
+
+    img {
+      width: 50px;
+      height: 50px;
+      margin: auto
+    }
+
+    .image__sliderControl {
+      position: absolute;
+    }
+  }
+}

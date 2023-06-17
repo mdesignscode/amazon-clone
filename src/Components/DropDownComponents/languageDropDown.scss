@@ -1,0 +1,121 @@
+@import '../Header/header.scss';
+
+.languages__dropdown {
+  background-color: transparent;
+  color: white;
+  border: none;
+  padding-bottom: 2px;
+  margin-left: .8em;
+
+  .languages__dropdownBody {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: 6px;
+
+    .flag {
+      width: 20px;
+      height: 19px;
+      position: relative;
+      bottom: 1px;
+    }
+
+    .language__code {
+      font-family: 'AmazonEmberBold';
+      font-size: 14px;
+      margin: 0 1px 0 6px;
+    }
+
+    .languages__dropdownToggle {
+      position: relative;
+      bottom: 1px;
+    }
+  }
+}
+
+
+  .languages__dropdownMenu {
+    background-color: $light;
+    width: 240px;
+    height: 216px;
+    font-size: 13.5px;
+    font-weight: 600;
+    border: 1px solid #bbbbbb;
+    color: #444;
+    position: absolute;
+    z-index: 10;
+    top: 4em;
+    right: 12em;
+    border-radius: 3px;
+    padding: 1.25em;
+
+    .shoppingAt {
+      position: relative;
+      bottom: 5px;
+    }
+
+    .form-check {
+      margin-bottom: .75em;
+      padding-bottom: .75em;
+      border-bottom: 1px solid $gray;
+      margin-left: 2em;
+
+      .form-check-input {
+        margin: 0 .5em 0 0;
+        position: relative;
+        top: 3px;
+        right: 3.5em;
+        display: inline-block;
+        width: 18px;
+        height: 18px;
+        background: url(https://m.media-amazon.com/images/S/sash/fe2UeLQmJ11kKHN.png);
+        background-position-x: 0%;
+        background-position-y: 0%;
+        background-position: -75px -2px;
+      }
+
+      .languageOption {
+        position: relative;
+        top: 4px;
+        right: 3.5em;
+      }
+
+      .spanish {
+        .moreOptions {
+          position: relative;
+          right: 2em;
+        }
+      }
+    }
+
+    &::before {
+      content: "";
+      background-color: $light;
+      width: 1em;
+      height: 1em;
+      position: absolute;
+      top: -5px;
+      right: 158px;
+      transform: rotate(45deg);
+    }
+
+    .moreOptions {
+      color: #0066c0;
+      display: block;
+      margin-top: .75em;
+      cursor: pointer;
+      margin-left: .5em;
+
+      &:hover {
+        text-decoration: underline;
+        text-decoration-color: #e87121;
+      }
+
+      &.last {
+        margin-left: 2em;
+        position: relative;
+        bottom: 0.15em;
+      }
+    }
+  }
