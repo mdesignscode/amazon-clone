@@ -1,26 +1,5 @@
-$primary: #ff9900;
-$lightGray: #f3f3f3;
-$semiDarkGray: #666666;
-$darkGray: #343433;
-$navy: #232f3e;
-$light: #fff;
-$dark: #131921;
-$gray: #eeeeee;
-
-@mixin setBorder {
-  background-color: transparent;
-  border: none;
-  border-radius: 3px;
-  color: white;
-
-  &:hover {
-    border: 1px solid $light;
-  }
-
-  &:focus {
-    border: 2px solid $primary;
-  }
-}
+@use '../../variables' as *;
+@use '../../mixins' as *;
 
 button,
 a {
@@ -194,7 +173,6 @@ a {
           margin-left: -.85em;
           position: relative;
           top: 10px;
-          // right: 3px;
         }
       }
     }

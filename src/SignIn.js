@@ -40,7 +40,7 @@ function SignIn ({ setUserAvatar, setUserName }) {
     <div className='signIn'>
       <Link to="/">
         <img
-          src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fiqexpress.co.uk%2Fwp-content%2Fuploads%2F2018%2F01%2Famazon-logo-transparent.png&f=1&nofb=1&ipt=7608c6a5b2ca227820ee8b44e44c5f11bfd976974bb3ec06a19c92fc51834cb7&ipo=images"
+          src="/amazon-logo.png"
           alt="Amazon Logo"
           className="signIn__logo"
         />
@@ -66,7 +66,7 @@ function SignIn ({ setUserAvatar, setUserName }) {
 
           <button
             className="signIn__button"
-            onPointerDown={signIn}
+            onClick={signIn}
             type="submit"
           >
             Sign in
@@ -78,7 +78,7 @@ function SignIn ({ setUserAvatar, setUserName }) {
 
         <button
           className="signIn__registerButton"
-          onPointerDown={register}
+          onClick={register}
         >
           Create your Amazon account
         </button>

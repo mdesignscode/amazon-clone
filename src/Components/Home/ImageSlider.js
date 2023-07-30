@@ -10,24 +10,30 @@ function ImageSlider ({ images }) {
 
   const previousSlide = () => {
     const isFirstSlide = currentIndex === 0;
+    const sliderImage = document.querySelector('.image__sliderImage');
     const newIndex = isFirstSlide ? images.length - 1 : currentIndex - 1;
     setCurrentIndex(newIndex);
-    document.querySelector('.image__sliderImage').classList.add('fadeIn');
+    if (sliderImage) {
+      sliderImage.classList.add('fadeIn');
 
-    setTimeout(() => {
-      document.querySelector('.image__sliderImage').classList.remove('fadeIn');
-    }, 1000);
+      setTimeout(() => {
+        sliderImage.classList.remove('fadeIn');
+      }, 1000);
+    }
   };
 
   const nextSlide = () => {
     const isLastSlide = currentIndex === images.length - 1;
     const newIndex = isLastSlide ? 0 : currentIndex + 1;
     setCurrentIndex(newIndex);
-    document.querySelector('.image__sliderImage').classList.add('fadeOut');
+    const sliderImage = document.querySelector('.image__sliderImage');
+    if (sliderImage) {
+      sliderImage.classList.add('fadeOut');
 
-    setTimeout(() => {
-      document.querySelector('.image__sliderImage').classList.remove('fadeOut');
-    }, 1000);
+      setTimeout(() => {
+        sliderImage.classList.remove('fadeOut');
+      }, 1000);
+    }
   };
 
   useEffect(() => {

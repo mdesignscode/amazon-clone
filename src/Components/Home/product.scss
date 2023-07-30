@@ -1,4 +1,5 @@
-@import '../Header/header.scss';
+@use '../../mixins' as *;
+@use '../../variables' as *;
 
 .product {
   display: flex;
@@ -42,10 +43,7 @@
   }
 
   button {
-    color: #111;
-    background-color: #f0c14b;
-    border: 1px solid;
-    border-color: #a88734 #9c7e31 #846a29;
+    @include setButton;
     margin-top: 10px;
   }
 }

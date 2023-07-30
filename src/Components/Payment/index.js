@@ -1,60 +1,43 @@
 import './index.scss';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useStateValue } from '../StateProvider';
-import { useNavigate } from 'react-router-dom';
 import CheckoutProduct from '../Checkout/CheckoutProduct';
-import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import CurrencyFormat from 'react-currency-format';
 import { getBasketTotal } from '../Reducer';
-import axios from '../Axios';
+import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 
 function Payment () {
   const [{ basket, user }] = useStateValue();
-  const navigate = useNavigate();
 
   const stripe = useStripe();
   const elements = useElements();
 
-  const [error, setError] = useState(null);
-  const [disabled, setDisabled] = useState(true);
+  // Handle the form submission when the "Buy Now" button is clicked
+  const handleSubmit = async (event) => {
+    event.preventDefault();
 
-  const [processing, setProcessing] = useState("");
-  const [succeeded, setSucceeded] = useState(false);
+    if (!stripe || !elements) {
+      // Stripe.js has not yet loaded.
+      // Make sure to disable the form submission until Stripe.js has loaded.
+      return;
+    }
 
-  const [clientSecret, setClientSecret] = useState(true);
+    const cardElement = elements.getElement(CardElement);
 
-  useEffect(() => {
-    const getClientSecret = async () => {
-      const response = await axios({
-        method: 'post',
-        url: `/payments/create?total=${getBasketTotal(basket) * 100}`
-      });
-      setClientSecret(response.data.clientSecret);
-    };
-
-    getClientSecret();
-  }, [basket]);
-
-  const handleSubmit = async e => {
-    e.preventDefault();
-    setProcessing(true);
-
-    await stripe.confirmCardPayment(clientSecret, {
-      payment_method: {
-        card: elements.getElement(CardElement)
-      }
-    }).then(({ paymentIntend }) => {
-      setSucceeded(true);
-      setError(null);
-      setProcessing(false);
-
-      navigate('/orders', { replace: true });
+    // Confirm the Card payment using Stripe
+    const { error, paymentMethod } = await stripe.createPaymentMethod({
+      type: 'card',
+      card: cardElement,
     });
-  };
 
-  const handleChange = e => {
-    setDisabled(e.empty);
-    setError(e.error ? e.error.message : "");
+    if (error) {
+      console.error('Stripe payment error:', error);
+      // Handle payment error, show user a message
+    } else {
+      // Payment is successful, you can handle success scenario here
+      console.log('Stripe payment successful!', paymentMethod);
+      // You can add code here to send payment information to your backend
+    }
   };
 
   return (
@@ -64,7 +47,6 @@ function Payment () {
           Checkout (
           <span
             aria-label="Navigation"
-            onPointerDown={e => navigate('/checkout')}
           >
             {basket?.length} items
           </span>
@@ -103,33 +85,27 @@ function Payment () {
             <h3>Payment Method</h3>
           </div>
 
-          <div className="payment__details" onSubmit={handleSubmit}>
-            {/* Stripe Magic🌠🪄 */}
-
-            <form>
-              <CardElement onChange={handleChange} />
+          <div className="payment__details">
+            <form onSubmit={handleSubmit}>
+              {/* Stripe Card Element */}
+              <CardElement />
 
               <div className="payment__priceContainer">
                 <CurrencyFormat
                   renderText={(value) => {
-                    return (<h3 className="mt-4">Order Total: {value}</h3>);
+                    return <h3 className="mt-4">Order Total: {value}</h3>;
                   }}
                   decimalScale={2}
                   value={getBasketTotal(basket)}
-                  displayType={"text"}
+                  displayType={'text'}
                   thousandSeparator={true}
-                  prefix={"$"}
+                  prefix={'$'}
                 />
 
-                <button className="btn btn-success" disabled={processing || disabled || succeeded}>
-                  <span>
-                    {processing ? <p>Processing</p> : "Buy Now"}
-                  </span>
+                <button type="submit" className="btn btn-success">
+                  <span>Buy Now</span>
                 </button>
               </div>
-
-              {/* Error */}
-              {error && <div>{error}</div>}
             </form>
           </div>
         </div>

@@ -1,11 +1,10 @@
 import './footer.scss';
-import React, { useState } from 'react';
+import React from 'react';
 import { Button } from 'react-bootstrap';
 import Logo from '../../assets/PikPng.com_amazon-logo-png_3272114.png';
 import { FaSortDown, FaSortUp } from 'react-icons/fa';
 import { US } from 'country-flag-icons/react/3x2';
 import { FaGlobe } from 'react-icons/fa';
-import LanguageDropDown from '../DropDownComponents/LanguageDropDown';
 
 function Footer () {
   const navLinks = [
@@ -68,16 +67,6 @@ function Footer () {
     }
   ];
 
-  const [hideLanguages, setHideLanguages] = useState(true);
-
-  const showLanguagesMenu = () => {
-    setHideLanguages(false);
-  };
-
-  const hideLanguagesMenu = () => {
-    setHideLanguages(true);
-  };
-
   return (
     <div
       className="footer"
@@ -125,8 +114,6 @@ function Footer () {
 
         <Button
           className="footer__languages"
-          onPointerEnter={showLanguagesMenu}
-          onPointerLeave={hideLanguagesMenu}
         >
           <FaGlobe /> English
 
@@ -142,10 +129,6 @@ function Footer () {
               className="footer__languagesToggleButton"
             />
           </span>
-
-          <div className="footer__languagesDropdownMenu">
-            <LanguageDropDown hideLanguages={hideLanguages} />
-          </div>
         </Button>
 
         <Button className="footer__language">

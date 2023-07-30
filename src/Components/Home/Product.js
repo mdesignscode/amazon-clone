@@ -44,7 +44,7 @@ function Product ({ title, image, price, rating, id }) {
         alt=""
       />
 
-      <Button onPointerDown={addToBasket}>Add to Cart</Button>
+      <Button onClick={addToBasket}>Add to Cart</Button>
     </div>
   );
 }

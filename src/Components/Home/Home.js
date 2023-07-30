@@ -1,6 +1,6 @@
 import './home.scss';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ImageSlider from './ImageSlider';
 import GridContainer from './GridContainer';
 import { Button } from 'react-bootstrap';
@@ -27,6 +27,14 @@ function Home () {
     }
 
   ];
+
+  const [productsList, setProductsList] = useState([]);
+
+  useEffect(() => {
+    fetch('https://fakestoreapi.com/products')
+      .then(res => res.json())
+      .then(json => setProductsList(json));
+  }, []);
 
   const [{ user }] = useStateValue();
 
@@ -274,55 +282,110 @@ function Home () {
       </div>
 
 
-      <div className="home__products mt-2">
-        <Product
-          id="4c0c93ea"
-          title="Non sunt occaecat occaecat incididunt eu duis ipsum consectetur."
-          image="https://picsum.photos/350/400?random=1"
-          price={19.99}
-          rating={5}
-        />
-        <Product
-          id="b0f846c4"
-          title="Duis elit aliquip aute non sint. Et do qui eiusmod do et."
-          image="https://picsum.photos/350/400?random=2"
-          price={250.00}
-          rating={5}
-        />
-      </div>
+      {
+        productsList.length && <>
+          <div className="home__products mt-2">
+            <Product
+              id={productsList[0].id}
+              title={productsList[0].title}
+              image={productsList[0].image}
+              price={Math.floor(productsList[0].price)}
+              rating={Math.floor(productsList[0].rating.rate)}
+            />
+            <Product
+              id={productsList[10].id}
+              title={productsList[10].title}
+              image={productsList[10].image}
+              price={Math.floor(productsList[10].price)}
+              rating={Math.floor(productsList[10].rating.rate)}
+            />
+          </div>
 
-      <div className="home__products">
-        <Product
-          id="e1a0c023"
-          title="Ex quis commodo sit incididunt. Ad culpa laborum et esse aute est."
-          image="https://picsum.photos/350/400?random=3"
-          price={572.00}
-          rating={4}
-        />
-        <Product
-          id="95a7b93e"
-          title="Velit velit dolore eu in elit voluptate excepteur elit excepteur."
-          image="https://picsum.photos/350/400?random=4"
-          price={254.00}
-          rating={5} />
-        <Product
-          id="09edd5af"
-          title="Consequat dolore commodo veniam non proident deserunt reprehenderit fugiat consectetur et est quis."
-          image="https://picsum.photos/350/400?random=5"
-          price={76.00}
-          rating={4}
-        />
-      </div>
+          <div className="home__products">
+            <Product
+              id={productsList[11].id}
+              title={productsList[11].title}
+              image={productsList[11].image}
+              price={Math.floor(productsList[11].price)}
+              rating={Math.floor(productsList[11].rating.rate)}
+            />
+            <Product
+              id={productsList[12].id}
+              title={productsList[12].title}
+              image={productsList[12].image}
+              price={Math.floor(productsList[12].price)}
+              rating={Math.floor(productsList[12].rating.rate)}
+            />
+            <Product
+              id={productsList[14].id}
+              title={productsList[14].title}
+              image={productsList[14].image}
+              price={Math.floor(productsList[14].price)}
+              rating={Math.floor(productsList[14].rating.rate)}
+            />
+          </div>
 
-      <div className="home__products">
-        <Product
-          id='c8fb0215'
-          title="Ea esse est eiusmod cillum proident consectetur sit cupidatat excepteur reprehenderit ex officia culpa.Officia et sunt mollit magna enim nisi nostrud."
-          image="https://images-na.ssl-images-amazon.com/images/I/6125mFrzr6L._AC_SX355.jpg"
-          price={895.00}
-          rating={5}
-        />
-      </div>
+          <div className="home__products">
+            <Product
+              id={productsList[13].id}
+              title={productsList[13].title}
+              image={productsList[13].image}
+              price={Math.floor(productsList[13].price)}
+              rating={Math.floor(productsList[13].rating.rate)}
+            />
+          </div>
+
+          <div className="home__products">
+            <Product
+              id={productsList[5].id}
+              title={productsList[5].title}
+              image={productsList[5].image}
+              price={Math.floor(productsList[5].price)}
+              rating={Math.floor(productsList[5].rating.rate)}
+            />
+            <Product
+              id={productsList[4].id}
+              title={productsList[4].title}
+              image={productsList[4].image}
+              price={Math.floor(productsList[4].price)}
+              rating={Math.floor(productsList[4].rating.rate)}
+            />
+          </div>
+
+          <div className="home__products">
+            <Product
+              id={productsList[3].id}
+              title={productsList[3].title}
+              image={productsList[3].image}
+              price={Math.floor(productsList[3].price)}
+              rating={Math.floor(productsList[3].rating.rate)}
+            />
+            <Product
+              id={productsList[2].id}
+              title={productsList[2].title}
+              image={productsList[2].image}
+              price={Math.floor(productsList[2].price)}
+              rating={Math.floor(productsList[2].rating.rate)}
+            />
+            <Product
+              id={productsList[1].id}
+              title={productsList[1].title}
+              image={productsList[1].image}
+              price={Math.floor(productsList[1].price)}
+              rating={Math.floor(productsList[1].rating.rate)}
+            />
+          </div>
+
+          <div className="home__products">
+            <Product
+              id={productsList[9].id}
+              title={productsList[9].title}
+              image={productsList[9].image}
+              price={Math.floor(productsList[9].price)}
+              rating={Math.floor(productsList[9].rating.rate)}
+            />
+          </div>
+        </>}
     </div>
   );
 }

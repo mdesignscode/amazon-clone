@@ -22,7 +22,7 @@ function HeaderBelt ({ onShowMenu, windowWidth }) {
     "Gift Cards"
   ];
 
-  const navBeltOptions = windowWidth > 1225 ? NAV_BELT_OPTIONS : NAV_BELT_OPTIONS.slice(0, -3);
+  const navBeltOptions = windowWidth > 1366 ? NAV_BELT_OPTIONS : NAV_BELT_OPTIONS.slice(0, -7);
 
   const showBeltMenu = () => {
     document.querySelector('.nav__beltMenuShow').classList.remove('animateOut')
@@ -93,8 +93,8 @@ function HeaderBelt ({ onShowMenu, windowWidth }) {
                 <span
                   key={`bo_${i}`}
                   className="nav__beltOption prime"
-                  onPointerEnter={showPrimeDropdown}
-                  onPointerLeave={hidePrimeDropdown}
+                  onMouseOver={showPrimeDropdown}
+                  onMouseOut={hidePrimeDropdown}
                 >
                   {option}
                   <FaSortDown size={13} color="#a7acb2" />

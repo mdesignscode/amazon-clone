@@ -1,4 +1,4 @@
-@import '../Header/header.scss';
+@use '../../variables' as *;
 
 .prime__dropdown {
   background-color: $light;

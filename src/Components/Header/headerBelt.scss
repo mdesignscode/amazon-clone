@@ -1,3 +1,4 @@
+@use '../../mixins' as *;
 $primary: #232f3e;
 $light: #fff;
 
@@ -26,13 +27,10 @@ $light: #fff;
 
   .nav__beltOptions {
     span {
+      @include setBorder;
       color: $light;
       cursor: pointer;
       padding: 4px 9px;
-    }
-
-    .nav__beltOption:hover {
-      border: 1px solid $light;
     }
 
     .prime {
