@@ -43,6 +43,14 @@
       .payment__address {
         flex: .8;
       }
+
+      .payment__priceContainer button {
+        transition: background ease-in-out 0.3s;
+        
+        &:disabled {
+          opacity: 0.5;
+        }
+      }
     }
   }
 }
